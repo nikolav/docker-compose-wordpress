@@ -2,11 +2,11 @@ version: "3"
 
 services:
   db:
-    image: mysql:5.7
+    image: mysql
     ports:
       - "3306:3306"
     volumes:
-      - data:/var/lib/mysql
+      - db_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: wp
       MYSQL_DATABASE: wp
@@ -17,6 +17,8 @@ services:
       - net-wp
 
   wordpress:
+    depends_on:
+      - db
     image: wordpress
     ports:
       - "80:80"
@@ -24,6 +26,7 @@ services:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wp
       WORDPRESS_DB_PASSWORD: wp
+      WORDPRESS_DB_NAME: wp
     restart: always
     networks:
       - net-wp
@@ -32,4 +35,4 @@ networks:
   net-wp:
 
 volumes:
-  data:
+  db_data:
