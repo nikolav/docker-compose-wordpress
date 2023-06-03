@@ -24,7 +24,6 @@ chmod +x /usr/local/bin/docker-compose
 ufw allow http
 ufw allow OpenSSH
 ufw allow 3306
-ufw allow 8081
 ufw enable
 
 # status check
