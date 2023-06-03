@@ -4,6 +4,11 @@
 apt update
 apt-get update
 
+# install git
+apt install git
+git config --global user.name "nikolav"
+git config --global user.email "admin@nikolav.rs"
+
 # install docker
 apt-get remove docker docker-engine docker.io containerd runc
 apt-get update
@@ -25,6 +30,10 @@ ufw allow http
 ufw allow OpenSSH
 ufw allow 3306
 ufw enable
+
+# shortcuts
+alias ll='ls -AlFht --color=auto --group-directories-first '
+alias gs='git status '
 
 # status check
 echo '== status'
